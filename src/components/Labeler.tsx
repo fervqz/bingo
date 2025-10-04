@@ -1,127 +1,89 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FileSaver from 'file-saver';
 const { saveAs } = FileSaver;
-import type { BingoNumber } from '../types';
-import { mockData as initialData } from '../data/mockData';
-import Navbar from './Navbar';
+import type { BingoNumber } from "../types";
+import { mockData as initialData } from "../data/mockData";
+import Navbar from "./Navbar";
+import CardGenerator from "./CardGenerator";
+import BingoImage from "./BingoImage";
 
 export default function Labeler() {
-    const [items, setItems] = useState<BingoNumber[]>(initialData);
+    const [items, setItems] = useState<BingoNumber[]>([]);
     const [isSaving, setIsSaving] = useState(false);
-    const [showImages, setShowImages] = useState(true);
+    const [showCardGenerator, setShowCardGenerator] = useState(false);
 
-    const handleSave = () => {
+    // Initialize with mock data
+    useEffect(() => {
+        setItems(JSON.parse(JSON.stringify(initialData)));
+    }, []);
+
+    const handleLabelChange = (index: number, newLabel: string) => {
+        const newItems = [...items];
+        newItems[index] = { ...newItems[index], label: newLabel };
+        setItems(newItems);
+    };
+
+    const handleSave = async () => {
         try {
             setIsSaving(true);
-            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-            const filename = `bingo-cards-${timestamp}.json`;
-            const json = JSON.stringify(items, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            saveAs(blob, filename);
+            // Here you can add any save logic if needed
+            // For now, we'll just log the items
+            console.log('Saving items:', items);
         } catch (error) {
-            console.error('Error saving file:', error);
+            console.error('Error saving items:', error);
         } finally {
             setIsSaving(false);
         }
     };
 
-    const handleLabelChange = (id: number, newLabel: string) => {
-        setItems(prevItems =>
-            prevItems.map(item =>
-                item.id === id ? { ...item, label: newLabel } : item
-            )
-        );
+    const downloadLabels = () => {
+        const data = {
+            timestamp: new Date().toISOString(),
+            items: items.map(item => ({
+                id: item.id,
+                label: item.label,
+                src: item.src
+            }))
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        saveAs(blob, `bingo-labels-${new Date().toISOString().slice(0, 10)}.json`);
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <Navbar 
-                onSave={handleSave} 
-                isSaving={isSaving} 
-                onToggleImages={() => setShowImages(!showImages)}
-                showImages={showImages}
-            />
-            <section className="mx-auto max-w-6xl py-8 px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold mb-8">Bingo Cards Generator</h1>
+        <div className="container mx-auto px-4 py-8">
+            <Navbar onSave={handleSave} isSaving={isSaving} onDownload={downloadLabels} />
 
+            <div className="mt-8">
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-semibold">Bingo Cards</h2>
+                    <h1 className="text-3xl font-bold">Bingo Card Labeler</h1>
                     <button
-                        onClick={() => setShowImages(!showImages)}
-                        className="text-sm text-blue-600 hover:text-blue-800 flex items-center"
+                        onClick={() => setShowCardGenerator(!showCardGenerator)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
-                        {showImages ? (
-                            <>
-                                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                                </svg>
-                                Hide Images
-                            </>
-                        ) : (
-                            <>
-                                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                </svg>
-                                Show Images
-                            </>
-                        )}
+                        {showCardGenerator ? 'Hide Card Generator' : 'Show Card Generator'}
                     </button>
                 </div>
-                <ul className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 transition-all duration-300 ${showImages ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                    {items.map((item: BingoNumber, index: number) => (
-                        <li
-                            key={index}
-                            className={`flex flex-col items-center p-4 border border-gray-400 rounded-lg shadow-sm hover:shadow-md transition-all ${!item.label.trim() ? 'border-red-500 border-4 shadow-[0_0_10px_3px] shadow-red-500' : ''}`}
-                        >
-                            <div className="relative w-full aspect-square bg-white border border-black rounded-md overflow-hidden mb-3">
-                                <div className="absolute inset-0 flex items-center justify-center bg-black">
-                                    <img
-                                        src={item.src}
-                                        alt={item.label}
-                                        className="max-w-full max-h-full object-contain"
-                                    />
-                                </div>
-                                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                    <div className="text-center">
-                                        <span
-                                            className="text-2xl font-extrabold text-white"
-                                            style={{
-                                                textShadow: `
-                                                    -1px -1px 0 #000,
-                                                    1px -1px 0 #000,
-                                                    -1px 1px 0 #000,
-                                                    1px 1px 0 #000,
-                                                    0 0 10px rgba(0,0,0,0.5)
-                                                `,
-                                                lineHeight: '1.2',
-                                                wordWrap: 'break-word',
-                                                maxWidth: '100%',
-                                                display: 'inline-block',
-                                                padding: '0.25rem 0.5rem',
-                                                backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                                                borderRadius: '0.25rem'
-                                            }}
-                                        >
-                                            #{index + 1} <br /> {item.label}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="w-full">
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-sm font-medium text-gray-500">Label (id: {item.id})</span>
-                                </div>
-                                <input
-                                    type="text"
-                                    value={item.label}
-                                    onChange={(e) => handleLabelChange(item.id, e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        </li>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    {items.map((item, index) => (
+                        <div key={item.id} className="relative">
+                            <BingoImage
+                                item={item}
+                                index={index}
+                                editable={true}
+                                onLabelChange={(newLabel) => handleLabelChange(index, newLabel)}
+                                className="mb-3"
+                            />
+                        </div>
                     ))}
-                </ul>
-            </section>
+                </div>
+            </div>
+
+            {showCardGenerator && (
+                <section className="mx-auto max-w-6xl py-8 px-4 sm:px-6 lg:px-8">
+                    <CardGenerator bingoImages={items} />
+                </section>
+            )}
         </div>
     );
 }
