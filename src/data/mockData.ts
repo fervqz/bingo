@@ -1,54 +1,234 @@
 import type { BingoNumber } from '../types';
 
 export const mockData: BingoNumber[] = [
-    { id: 1, label: 'Nature', src: 'https://picsum.photos/seed/nature/200/300' },
-    { id: 2, label: 'City', src: 'https://picsum.photos/seed/city/200/300' },
-    { id: 3, label: 'Beach', src: 'https://picsum.photos/seed/beach/200/300' },
-    { id: 4, label: 'Mountain', src: 'https://picsum.photos/seed/mountain/200/300' },
-    { id: 5, label: 'Forest', src: 'https://picsum.photos/seed/forest/200/300' },
-    { id: 6, label: 'Desert', src: 'https://picsum.photos/seed/desert/200/300' },
-    { id: 7, label: 'Ocean', src: 'https://picsum.photos/seed/ocean/200/300' },
-    { id: 8, label: 'River', src: 'https://picsum.photos/seed/river/200/300' },
-    { id: 9, label: 'Lake', src: 'https://picsum.photos/seed/lake/200/300' },
-    { id: 10, label: 'Waterfall', src: 'https://picsum.photos/seed/waterfall/200/300' },
-    { id: 11, label: 'Sunset', src: 'https://picsum.photos/seed/sunset/200/300' },
-    { id: 12, label: 'Sunrise', src: 'https://picsum.photos/seed/sunrise/200/300' },
-    { id: 13, label: 'Night', src: 'https://picsum.photos/seed/night/200/300' },
-    { id: 14, label: 'Sky', src: 'https://picsum.photos/seed/sky/200/300' },
-    { id: 15, label: 'Clouds', src: 'https://picsum.photos/seed/clouds/200/300' },
-    { id: 16, label: 'Rain', src: 'https://picsum.photos/seed/rain/200/300' },
-    { id: 17, label: 'Snow', src: 'https://picsum.photos/seed/snow/200/300' },
-    { id: 18, label: 'Autumn', src: 'https://picsum.photos/seed/autumn/200/300' },
-    { id: 19, label: 'Winter', src: 'https://picsum.photos/seed/winter/200/300' },
-    { id: 20, label: 'Spring', src: 'https://picsum.photos/seed/spring/200/300' },
-    { id: 21, label: 'Summer', src: 'https://picsum.photos/seed/summer/200/300' },
-    { id: 22, label: 'Flowers', src: 'https://picsum.photos/seed/flowers/200/300' },
-    { id: 23, label: 'Animals', src: 'https://picsum.photos/seed/animals/200/300' },
-    { id: 24, label: 'Birds', src: 'https://picsum.photos/seed/birds/200/300' },
-    { id: 25, label: 'Cats', src: 'https://picsum.photos/seed/cats/200/300' },
-    { id: 26, label: 'Dogs', src: 'https://picsum.photos/seed/dogs/200/300' },
-    { id: 27, label: 'Wildlife', src: 'https://picsum.photos/seed/wildlife/200/300' },
-    { id: 28, label: 'Travel', src: 'https://picsum.photos/seed/travel/200/300' },
-    { id: 29, label: 'Adventure', src: 'https://picsum.photos/seed/adventure/200/300' },
-    { id: 30, label: 'Hiking', src: 'https://picsum.photos/seed/hiking/200/300' },
-    { id: 31, label: 'Camping', src: 'https://picsum.photos/seed/camping/200/300' },
-    { id: 32, label: 'Road Trip', src: 'https://picsum.photos/seed/roadtrip/200/300' },
-    { id: 33, label: 'Architecture', src: 'https://picsum.photos/seed/architecture/200/300' },
-    { id: 34, label: 'Urban', src: 'https://picsum.photos/seed/urban/200/300' },
-    { id: 35, label: 'Street', src: 'https://picsum.photos/seed/street/200/300' },
-    { id: 36, label: 'Portrait', src: 'https://picsum.photos/seed/portrait/200/300' },
-    { id: 37, label: 'Fashion', src: 'https://picsum.photos/seed/fashion/200/300' },
-    { id: 38, label: 'Food', src: 'https://picsum.photos/seed/food/200/300' },
-    { id: 39, label: 'Coffee', src: 'https://picsum.photos/seed/coffee/200/300' },
-    { id: 40, label: 'Wine', src: 'https://picsum.photos/seed/wine/200/300' },
-    { id: 41, label: 'Books', src: 'https://picsum.photos/seed/books/200/300' },
-    { id: 42, label: 'Music', src: 'https://picsum.photos/seed/music/200/300' },
-    { id: 43, label: 'Art', src: 'https://picsum.photos/seed/art/200/300' },
-    { id: 44, label: 'Abstract', src: 'https://picsum.photos/seed/abstract/200/300' },
-    { id: 45, label: 'Minimal', src: 'https://picsum.photos/seed/minimal/200/300' },
-    { id: 46, label: 'Vintage', src: 'https://picsum.photos/seed/vintage/200/300' },
-    { id: 47, label: 'Retro', src: 'https://picsum.photos/seed/retro/200/300' },
-    { id: 48, label: 'Technology', src: 'https://picsum.photos/seed/technology/200/300' },
-    { id: 49, label: 'Space', src: 'https://picsum.photos/seed/space/200/300' },
-    { id: 50, label: 'Macro', src: 'https://picsum.photos/seed/macro/200/300' }
+    {
+        "id": 1,
+        "label": "The Last Water Bender",
+        "src": "/img/mm-01.jpg"
+    },
+    {
+        "id": 2,
+        "label": "Jon Smoke",
+        "src": "/img/mm-02.jpg"
+    },
+    {
+        "id": 3,
+        "label": "\"Esto parece un poco ilegal\"",
+        "src": "/img/mm-03.jpg"
+    },
+    {
+        "id": 4,
+        "label": "\"Si estuviera borracho haría estoooo...\"",
+        "src": "/img/mm-04.jpg"
+    },
+    {
+        "id": 5,
+        "label": "I'll Be Watching You...",
+        "src": "/img/mm-05.jpg"
+    },
+    {
+        "id": 6,
+        "label": "Swipe Right",
+        "src": "/img/mm-06.jpg"
+    },
+    {
+        "id": 7,
+        "label": "Milton-19",
+        "src": "/img/mm-07.jpg"
+    },
+    {
+        "id": 8,
+        "label": "Partners in Crime",
+        "src": "/img/mm-08.jpg"
+    },
+    {
+        "id": 9,
+        "label": "Breaking Bad",
+        "src": "/img/mm-09.jpg"
+    },
+    {
+        "id": 10,
+        "label": "No Homo (se besan)",
+        "src": "/img/mm-10.jpg"
+    },
+    {
+        "id": 11,
+        "label": "\"Yo la veo promedio eh\"",
+        "src": "/img/mm-11.jpg"
+    },
+    {
+        "id": 12,
+        "label": "Rápido y Borroso",
+        "src": "/img/mm-12.jpg"
+    },
+    {
+        "id": 13,
+        "label": "El Sabio",
+        "src": "/img/mm-13.jpg"
+    },
+    {
+        "id": 16,
+        "label": "The Devil Wears Prada",
+        "src": "/img/mm-16.jpg"
+    },
+    {
+        "id": 17,
+        "label": "\"¿Qué fumé?\"",
+        "src": "/img/mm-17.jpg"
+    },
+    {
+        "id": 18,
+        "label": "Amors ❤️",
+        "src": "/img/mm-18.jpg"
+    },
+    {
+        "id": 19,
+        "label": "El Niño Hipotecado",
+        "src": "/img/mm-19.jpg"
+    },
+    {
+        "id": 20,
+        "label": "Cine 🚬",
+        "src": "/img/mm-20.jpg"
+    },
+    {
+        "id": 21,
+        "label": "Herba Milton",
+        "src": "/img/mm-21.jpg"
+    },
+    {
+        "id": 22,
+        "label": "Fenta-Milton",
+        "src": "/img/mm-22.jpg"
+    },
+    {
+        "id": 23,
+        "label": "La Concreta",
+        "src": "/img/mm-23.jpg"
+    },
+    {
+        "id": 24,
+        "label": "\"Este no iba pal centro\"",
+        "src": "/img/mm-24.jpg"
+    },
+    {
+        "id": 25,
+        "label": "Propuesta Indecente",
+        "src": "/img/mm-25.jpg"
+    },
+    {
+        "id": 26,
+        "label": "No puc mes",
+        "src": "/img/mm-26.jpg"
+    },
+    {
+        "id": 27,
+        "label": "Malas Influencias",
+        "src": "/img/mm-27.jpg"
+    },
+    {
+        "id": 28,
+        "label": "Quarantine Street Boys",
+        "src": "/img/mm-28.jpg"
+    },
+    {
+        "id": 29,
+        "label": "\"¿Tenía que traer algo abajo?\"",
+        "src": "/img/mm-29.jpg"
+    },
+    {
+        "id": 31,
+        "label": "\"...y una coca light\"",
+        "src": "/img/mm-31.jpg"
+    },
+    {
+        "id": 32,
+        "label": "Teknoloyiaaa",
+        "src": "/img/mm-32.jpg"
+    },
+    {
+        "id": 33,
+        "label": "gÁudi",
+        "src": "/img/mm-33.jpg"
+    },
+    {
+        "id": 34,
+        "label": "Rey Palomo 👑🐦",
+        "src": "/img/mm-34.jpg"
+    },
+    {
+        "id": 35,
+        "label": "Hackerman 💻",
+        "src": "/img/mm-35.jpg"
+    },
+    {
+        "id": 36,
+        "label": "🫦🫦🫦🫦🫦",
+        "src": "/img/mm-36.jpg"
+    },
+    {
+        "id": 37,
+        "label": "Miltonus Andreas Maximus III",
+        "src": "/img/mm-37.jpg"
+    },
+    {
+        "id": 38,
+        "label": "Mr Milton",
+        "src": "/img/mm-38.jpg"
+    },
+    {
+        "id": 39,
+        "label": "Foc Boi 🫦",
+        "src": "/img/mm-39.jpg"
+    },
+    {
+        "id": 40,
+        "label": "Baby Milton",
+        "src": "/img/mm-40.jpg"
+    },
+    {
+        "id": 41,
+        "label": "\"buenas pizzas, me da una noche\"",
+        "src": "/img/mm-41.jpg"
+    },
+    {
+        "id": 42,
+        "label": "\"Viernes de ahorcar rucas\"",
+        "src": "/img/mm-42.jpg"
+    },
+    {
+        "id": 43,
+        "label": "\"...pero yo puedo hacer esto\"",
+        "src": "/img/mm-43.jpg"
+    },
+    {
+        "id": 44,
+        "label": "Tomás Cruz",
+        "src": "/img/mm-44.jpg"
+    },
+    {
+        "id": 45,
+        "label": "El Bélico",
+        "src": "/img/mm-45.jpg"
+    },
+    {
+        "id": 46,
+        "label": "El Magnate",
+        "src": "/img/mm-46.jpg"
+    },
+    {
+        "id": 47,
+        "label": "\"Hola perdida\"",
+        "src": "/img/mm-47.jpg"
+    },
+    {
+        "id": 48,
+        "label": "El Empana'o",
+        "src": "/img/mm-48.jpg"
+    },
+    {
+        "id": 50,
+        "label": "\"Como yo lo veo...\"",
+        "src": "/img/mm-50.jpg"
+    },
 ];
